@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // /* eslint-disable no-unused-vars */
 import React from "react"
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 
 import { Login, Home, Shop, Contact, AboutUs } from './pages'; 
 import Account from "./sidePages/Account";
@@ -14,7 +14,7 @@ import ErrorPage from "./pages/ErrorPage";
 import SignUp from "./component/SignUp"
 import ProtectedRoute from "./functions/ProtectedRoute";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <>
     <Route path="/" element={<Layout />}>

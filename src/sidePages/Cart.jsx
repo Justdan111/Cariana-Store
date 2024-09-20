@@ -28,12 +28,12 @@ const Cart = () => {
   
   
   
-  console.log(cart);
+ 
   
 
 
   return (
-    <div className="container mx-auto py-16 ">
+    <div className="container mx-auto py-7 ">
       {cart.length > 0 ? (
         <div className="w-full mx-auto">
           <h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>

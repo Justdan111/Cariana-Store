@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { CartContext } from '../context/CartContext';
 import { PaystackButton } from "react-paystack"
-
+import { Tooltip } from '@mui/material';
 const CheckOut = () => {
     
   const publicKey = "pk_test_d51c282e46a5af58553e5b45a94a14c9c1352e68"
@@ -14,8 +14,8 @@ const CheckOut = () => {
   const [phone, setPhone] = useState("")
   const [country, setCountry] = useState("")
 
-  const {cart, total} = useContext(CartContext) 
-
+  const {cart, total, } = useContext(CartContext) 
+  
 
   const componentProps = {
     email,
@@ -35,7 +35,7 @@ const CheckOut = () => {
   return (
     <div className='p-10'>
       <Link to="/shop" >
-      <FaCircleArrowLeft  className='m-5'/>
+     <Tooltip title="back to shop"> <FaCircleArrowLeft  className='m-5'/> </Tooltip> 
       </Link>
 
       <div className='m-6'>
@@ -159,7 +159,7 @@ const CheckOut = () => {
     <table className="min-w-full bg-white">
       <thead className="bg-gray-100">
         <tr>
-          <th className="text-left p-4 font-semibold text-gray-600">Product</th>
+          <th className="text-left p-4 font-semibold text-gray-600">Product </th>
           <th className="text-left p-4 font-semibold text-gray-600 border-l">Subtotal</th>
         </tr>
       </thead>
@@ -167,7 +167,7 @@ const CheckOut = () => {
         {cart.map((item) => (
           <tr key={item.id} className="border-b">
             <td className="p-4 flex items-center text-gray-700">
-              {item.title}
+              {item.title} x  {item.amount}
             </td>
             <td className="p-4 text-right font-semibold text-gray-700 border-l">
               ${parseFloat(item.price * item.amount).toFixed(2)}

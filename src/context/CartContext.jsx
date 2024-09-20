@@ -29,23 +29,18 @@ const CartProvider = ({ children }) => {
     return cart.some(item => item.id === id);
   };
 
+  
   // Add to cart
   const addToCart = (product, id) => {
-    const newItem = { ...product, amount: 1 };
     const cartItem = cart.find(item => item.id === id);
-
-    if (cartItem) {
-      const newCart = cart.map(item => {
-        if (item.id === id) {
-          return { ...item, amount: item.amount + 1 };
-        }
-        return item;
-      });
-      setCart(newCart);
-    } else {
+  
+    // If the item is already in the cart, do nothing
+    if (!cartItem) {
+      const newItem = { ...product, amount: 1 };
       setCart([...cart, newItem]);
     }
   };
+  
 
 
 

@@ -9,6 +9,7 @@ import { FaHeart } from "react-icons/fa";
 import { CartContext } from "../context/CartContext";
 import { WishListContext } from "../context/WishListContext";
 import { TiTick } from "react-icons/ti";
+import Tooltip from '@mui/material/Tooltip';
 
 
 const Product = ({ product }) => {
@@ -33,18 +34,24 @@ const Product = ({ product }) => {
                 <button onClick={() => addToCart(product, id)}>
                 <div 
                         className='flex justify-center items-center text-white w-12 h-12 bg-primary'>
-                       {inCart ? <TiTick className="text-xl" /> : <GiShoppingCart className="text-xl" />}
+                       {inCart ?  
+                       <Link to={'/cart'}>
+                        <Tooltip title="view cart"> <TiTick className="text-xl" />  </Tooltip>
+                       </Link>
+                       :
+                       <Tooltip title="add to cart"> <GiShoppingCart className="text-xl" /> </Tooltip>
+                       }
                      </div>
                     </button>
 
                     <Link to={`/product/${product.id}`}
                      className="w-12 h-12 bg-white flex justify-center items-center text-primary drop-shadow-xl">
-                    <FaArrowRight />
+                   <Tooltip title="view product"> <FaArrowRight /> </Tooltip> 
                     </Link>
 
                     <button onClick={() => addToWishList(product, id)}
                     className={`w-12 h-12 bg-white flex justify-center items-center ${inWishList ?  "text-primary" : "text-green-400" } drop-shadow-xl`}>
-                     <FaHeart />
+                      <Tooltip title="add to wishlist"> <FaHeart  />  </Tooltip>
                     </button>
                 </div>
              </div>

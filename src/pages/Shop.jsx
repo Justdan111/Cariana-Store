@@ -9,6 +9,7 @@ import { WishListContext } from "../context/WishListContext";
 import { Link } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
 import { TiTick } from "react-icons/ti";
+import Tooltip from '@mui/material/Tooltip';
 
 const Shop = () => {
     const { products, isLoading, error } = useContext(ProductContext);
@@ -103,7 +104,13 @@ const Shop = () => {
                         <button onClick={() => addToCart(product, product.id)}>
                         <div 
                         className='flex justify-center items-center text-white w-12 h-12 bg-primary'>
-                       {inCart ? <TiTick className="text-xl" /> : <GiShoppingCart className="text-xl" />}
+                       {inCart ?  
+                       <Link to={'/cart'}>
+                        <Tooltip title="view cart"> <TiTick className="text-xl" />  </Tooltip>
+                       </Link>
+                       :
+                       <Tooltip title="add to cart"> <GiShoppingCart className="text-xl" /> </Tooltip>
+                       }
                      </div>
 
                         </button>
@@ -112,7 +119,7 @@ const Shop = () => {
                           to={`/product/${product.id}`}
                           className="w-12 h-12 bg-white flex justify-center items-center text-primary drop-shadow-xl"
                         >
-                          <FaArrowRight />
+                       <FaArrowRight title="view product" /> 
                         </Link>
     
                         <button
@@ -121,7 +128,7 @@ const Shop = () => {
                             inWishList ? "text-primary" : "text-green-400"
                           } drop-shadow-xl`}
                         >
-                          <FaHeart />
+                         <Tooltip title="add to wishlist"> <FaHeart  />  </Tooltip>
                         </button>
                       </div>
                     </div>

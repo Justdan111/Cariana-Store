@@ -113,7 +113,7 @@ const Navbar = () => {
       )}
 
       {isMenuVisible && (
-        <div className="absolute inset-0 z-50 flex justify-center  ">
+        <div className="absolute inset-0 z-50 flex justify-center   ">
           <div className="flex-1 bg-transparent   " onClick={toggleMenu} />
 
          
@@ -159,9 +159,10 @@ const Navbar = () => {
 
          {/* search logic */}
          {isSearchVisible && (
-         <div className="fixed top-0 right-0 z-50 flex items-start justify-end bg-black bg-opacity-60  h-full w-full">
+         <div   
+         className="fixed top-0 right-0 z-50 flex items-start justify-end bg-black bg-opacity-60  h-full w-full">
   {/* Search modal container */}
-  <div className="bg-white p-4 rounded w-full sm:w-96 h-full shadow-lg">
+  <div className="bg-white p-4 rounded w-full sm:w-96 h-full shadow-lg" >
     {/* Close button */}
     <IoCloseSharp
       onClick={() => setSearchVisible(false)}
@@ -182,7 +183,7 @@ const Navbar = () => {
 
     {/* Search results */}
     
-    <div className="search-results mt-4 overflow-y-scroll h-full"  onClick={() => setSearchVisible(false)}>
+    <div className="search-results mt-4 overflow-y-scroll h-full" onClick={() => setSearchVisible(false)} >
       {result.length > 0 ? (
         result.map((product) => (
           <Link to={`/product/${product.id}`}>

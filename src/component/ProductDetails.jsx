@@ -30,9 +30,9 @@ const ProductDetails = () => {
      }
 
      
-     const { title, price, description, image } = product;
+     const { title, price, description, image , } = product;
     return ( 
-        <section className='pt-32 pb-12 lg:py-32 h-screen flex items-center '>
+        <section className='pt-32 pb-12 lg:py-32 h-screen flex items-center mb-10'>
             <div className="container mx auto">
                 {/* image and text wrap */}
                 <div className='flex flex-col lg:flex-row items-center'>
@@ -52,7 +52,7 @@ const ProductDetails = () => {
                             {inCart ? "Added to cart" : "Add to cart"}
                             </button>
 
-                       <button className='bg-primary text-white py-3 px-6 m-5 hover:bg-gray-500'>
+                       <button className='bg-primary text-white py-3 px-6 m-5 hover:bg-gray-500 '>
                         <Link to="/shop"> Back to Shop</Link>
                        </button>
                     </div>
