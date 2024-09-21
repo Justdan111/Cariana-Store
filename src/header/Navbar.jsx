@@ -94,11 +94,11 @@ const Navbar = () => {
         {/* Mobile Menu */}
        
         {smallScreen && (
-        <div className="absolute inset-0 z-50 flex flex-col bg-white border-t border-gray-200 w-64 ">
+        <div className="fixed top-0   items-start justify-center   h-full w-1/2  z-50 flex flex-col bg-white border-t border-gray-200  ">
            <div onClick={() => {
           setSmallScreen(false)
         }}
-         className='absolute top-7 -scale-150 ml-56'>
+         className='fixed top-7 scale-150 ml-40 '>
              <IoCloseSharp className='h-full w-full'/>
              </div>
           <ul className="flex flex-col mt-9"  onClick={() => {
@@ -112,17 +112,20 @@ const Navbar = () => {
         </div>
       )}
 
+
+           {/* side menu */}
       {isMenuVisible && (
-        <div className="absolute inset-0 z-50 flex justify-center   ">
-          <div className="flex-1 bg-transparent   " onClick={toggleMenu} />
+        <div className='fixed inset-0 bg-black bg-opacity-50 z-40' onClick={toggleMenu} >
+        <div className=" fixed top-0 -right-0 justify-center items-center  h-full w-64  z-50 flex  bg-white border-t border-gray-200   " >
+         
 
          
           
-          <div className="w-64 bg-white text-black p-4 items-center flex justify-center gap-y-4 relative">
+          <div className="  text-black p-14 my-5  gap-y-4 ">
           <div onClick={() => {
           toggleMenu(false)
         }}
-         className='absolute top-7 -scale-150'>
+         className='absolute top-7 scale-150 ml-3'>
              <IoCloseSharp className='h-full w-full'/>
              </div>
         
@@ -153,6 +156,7 @@ const Navbar = () => {
                 
             </ul>
           </div>
+        </div>
         </div>
       )}
    

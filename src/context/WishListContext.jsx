@@ -1,10 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const WishListContext = createContext();
 
 export const WishListProvider = ({ children }) => {
-  const [wishList, setWishList] = useState([]);
+  const [wishList, setWishList] = useState(()=>{
+    const savedWishList = localStorage.getItem("wishList");
+    return savedWishList ? JSON.parse(savedWishList) : [];
+  });
+  const [wishListCount, setWishListCount] = useState(0);
+
+
+
+  useEffect(() => {
+    // Update cartCount whenever cart changes
+    setWishListCount(wishList.length);
+    // save to cart whenever the cart changes
+    localStorage.setItem("wishList", JSON.stringify(wishList))
+  }, [wishList]);
 
   const addToWishList = (product) => {
     setWishList((prevWishList) => {

@@ -12,7 +12,7 @@ import { TiTick } from "react-icons/ti";
 import Tooltip from '@mui/material/Tooltip';
 
 const Shop = () => {
-    const { products, isLoading, error } = useContext(ProductContext);
+    const { products, isLoading, error, truncateText } = useContext(ProductContext);
     const { addToCart, isInCart } = useContext(CartContext);
     const {addToWishList, isInWishList} = useContext(WishListContext)
     
@@ -92,7 +92,10 @@ const Shop = () => {
                   <div key={product.id}>
                     <div className="border border-gray-300 h-[300px] mb-4 relative overflow-hidden group transition">
                       <div className="w-full h-full flex justify-center items-center">
+
+                        {/* image */}
                         <div className="w-[200px] mx-auto flex justify-center items-center">
+
                           <img
                             className="max-h-[160px] group-hover:scale-110 transition duration-300 object-cover"
                             src={product.image}
@@ -100,6 +103,8 @@ const Shop = () => {
                           />
                         </div>
                       </div>
+
+                      {/* buttons */}
                       <div className="absolute bottom-[-50px] right-0 group-hover:bottom-0 p-2 flex flex-col items-end justify-end gap-y-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
                         <button onClick={() => addToCart(product, product.id)}>
                         <div 
@@ -133,12 +138,13 @@ const Shop = () => {
                       </div>
                     </div>
     
+                    {/* category & title & price */}
                     <div>
                       <div className="text-sm capitalize text-gray-500 mb-1">
                         {product.category}
                       </div>
                       <Link to={`/product/${product.id}`}>
-                        <h2 className="font-semibold mb-1">{product.title}</h2>
+                        <h2 className="font-semibold mb-1">{truncateText(product.title, 20)}</h2>
                       </Link>
                       <div className="font-semibold">$ {product.price}</div>
                     </div>

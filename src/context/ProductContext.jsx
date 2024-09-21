@@ -17,10 +17,18 @@ const fetchProducts = async () => {
     queryFn: fetchProducts
   });
 
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + '...';
+    }
+    return text;
+  };
+  
+
  
 
   return (
-    <ProductContext.Provider value={{ products, isLoading, error }}>
+    <ProductContext.Provider value={{ products, isLoading, error, truncateText }}>
       {children}
     </ProductContext.Provider>
   );

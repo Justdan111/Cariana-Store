@@ -3,20 +3,15 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
+import { ProductContext } from '../context/ProductContext';
 
 
 
 
 const Cart = () => {
-  const {
-    cart,
-    removeFromCart,
-    
-    decreaseAmount,
-    total,
-    setCart
-   
-  } = useContext(CartContext);
+  const { cart, removeFromCart, decreaseAmount, total, setCart} = useContext(CartContext);
+
+  const { truncateText } = useContext(ProductContext);
 
   const handleIncrease = (item) => {
     setCart((prev) =>
@@ -51,7 +46,7 @@ const Cart = () => {
               <tbody>
                 {cart.map((item) => (
                   <tr key={item.id} className="border-b">
-                    <td className="p-4 flex items-center">
+                    <td className="p-4 flex items-center ">
                       <img
                         src={item.image}
                         alt=""
@@ -59,9 +54,9 @@ const Cart = () => {
                       />
                       <Link
                         to={`/product/${item.id}`}
-                        className="font-semibold hover:text-pink-500"
+                        className="font-semibold hover:text-pink-500 "
                       >
-                        {item.title}
+                        {truncateText (item.title, 40)}
                       </Link>
                     </td>
                     <td className="p-4">

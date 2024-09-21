@@ -7,7 +7,7 @@ import Product from "../component/Product";
 import { ImSpinner9 } from "react-icons/im";
 
 const Home = () => {
-  const { products, isLoading, error } = useContext(ProductContext);
+  const { products, isLoading, error,  } = useContext(ProductContext);
 
   if (isLoading) {
     return (
@@ -43,9 +43,9 @@ const Home = () => {
       <Hero />
       <FeaturesSection />
 
-      <section className="py-16">
+      <section className="py-16 w-full">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
+          <div className="grid grid-cols sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
             {filteredProducts.map((product) => (
               <Product product={product} key={product.id} />
             ))}

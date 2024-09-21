@@ -4,9 +4,11 @@ import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 
 const CartItem = ({ item }) => {
-    const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
+    const { removeFromCart, } = useContext(CartContext);
+    const { truncateText } = useContext(ProductContext);
 
     const {id, title, image, price, amount} = item; 
     return   (
@@ -24,7 +26,7 @@ const CartItem = ({ item }) => {
 
                 {/* title */}
                 <Link to={`/product/${id}`} className="text-sm uppercase font-medium max-w-[240px] text-red-950 hover:text-primary">
-                    {title}
+                    {truncateText (title, 40)}
                 </Link>
 
 

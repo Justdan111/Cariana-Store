@@ -10,15 +10,20 @@ import { CartContext } from "../context/CartContext";
 import { WishListContext } from "../context/WishListContext";
 import { TiTick } from "react-icons/ti";
 import Tooltip from '@mui/material/Tooltip';
+import { ProductContext } from "../context/ProductContext";
 
 
-const Product = ({ product }) => {
+const Product = ({ product  }) => {
+    const { truncateText } = useContext(ProductContext);
     const { addToCart, isInCart } = useContext(CartContext)
     const inCart = isInCart(product.id);
     const {addToWishList, isInWishList} = useContext(WishListContext)
     const inWishList = isInWishList(product.id);
 
     const { id, image, category, title, price } = product;
+
+
+    
     return (  
     <div>
         <div className="border border-[#ded7d7f5] h-[300px] mb-4 relative overflow-hidden group transition">
@@ -59,7 +64,7 @@ const Product = ({ product }) => {
         <div>
             <div className="text-sm capitalize text-gray-500 mb-1"> {category}</div>
             <Link to={`/product/${id}`}>
-            <h2 className="font-semibold mb-1">{title}</h2>
+            <h2 className="font-semibold mb-1">{truncateText(title, 40)}  </h2>
             </Link>
             
             <div className="font-semibold">$ {price}</div>

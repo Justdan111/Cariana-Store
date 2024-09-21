@@ -6,10 +6,12 @@ import { WishListContext } from '../context/WishListContext';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import {  IoMdClose } from 'react-icons/io';
+import { ProductContext } from '../context/ProductContext';
 
 const Wishlist = () => {
   const { wishList,    removeFromWishList } = useContext(WishListContext);
   const { addToCart, isInCart } = useContext(CartContext);
+  const { truncateText } = useContext(ProductContext)
   
 
   return (
@@ -41,7 +43,7 @@ const Wishlist = () => {
                     to={`/product/${item.id}`}
                     className="font-semibold hover:text-pink-500"
                   >
-                    {item.title}
+                    {truncateText (item.title, 40)}
                   </Link>
                 </td>
                 <td className="p-4 font-semibold">
@@ -71,7 +73,7 @@ const Wishlist = () => {
         </tbody>
       </table>
 
-      <Link to="/shop" className="mt-4 text-pink-500 underline ">
+      <Link to="/shop" className="mt-4 text-pink-400 underline ">
         Continue Shopping
       </Link>
     </div>

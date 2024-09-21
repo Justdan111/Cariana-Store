@@ -4,9 +4,16 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(()=>{
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [itemAmount, setItemAmount] = useState(0);
   const [total, setTotal] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
+
+ 
+
 
   // Calculate total price
   useEffect(() => {
@@ -29,7 +36,16 @@ const CartProvider = ({ children }) => {
     return cart.some(item => item.id === id);
   };
 
-  
+
+
+  useEffect(() => {
+    // Update cartCount whenever cart changes
+    setCartCount(cart.length);
+    // save to cart whenever the cart changes
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }, [cart]);
+
+
   // Add to cart
   const addToCart = (product, id) => {
     const cartItem = cart.find(item => item.id === id);
