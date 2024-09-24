@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, {  useState } from "react";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidationSchema } from "../functions/LoginValidation";
 import { Link, Navigate } from "react-router-dom";
@@ -103,7 +103,7 @@ const Login = () => {
       </button>
 
 
-      </form> <DevTool control={control} />
+      </form> 
       
     </section>
     </>
