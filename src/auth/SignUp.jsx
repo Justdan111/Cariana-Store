@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidationSchema } from "../functions/LoginValidation";
 import { Link, Navigate } from "react-router-dom";
@@ -103,7 +103,7 @@ const SignUp = () => {
               <Link to={'/login'} className="text-pink-500 hover:text-pink-600"> Login </Link>
               </div>
 
-      </form> <DevTool control={control} />
+      </form> 
       
     </section>
     </>
