@@ -23,7 +23,7 @@ const Sidebar = () => {
       <div
         className={`${
           isOpen ? 'right-0' : '-right-full'
-        } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 px-4 lg:px-[35px] overflow-auto z-50`}
+        } w-full bg-white fixed top-0 h-full shadow-2xl sm:w-64 md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 px-4 lg:px-[35px] overflow-auto z-50`}
       >
         <div className="flex items-center justify-between py-6 border-b pt-6">
           <div className=" flex uppercase font-semibold">
@@ -37,7 +37,7 @@ const Sidebar = () => {
         </div>
 
         {cart.length > 0 ? (
-          <div className="flex flex-col gap-y-2 h-[500px] lg:h-[300px] overflow-y-auto overflow-x-hidden border-b ">
+          <div className="flex flex-col gap-y-2 h-[500px] lg:h-[320px] overflow-y-auto overflow-x-hidden border-b ">
             {cart.map((item) => {
               return <CartItem item={item} key={item.id} />;
             })}

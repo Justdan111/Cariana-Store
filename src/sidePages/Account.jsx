@@ -1,13 +1,18 @@
-import { Login } from "../pages";
+import Login from "../auth/Login";
+import Dashboard from "../component/Dashboard"
+import { useAuth } from "../context/AuthContext";
 
 
 const Account = () => {
+
+   const { userLoggedIn } = useAuth();
+
     return ( 
         <div>
           
            <h1></h1> 
-
-           <Login />
+         {userLoggedIn ? <Dashboard /> : <Login />  }
+           
         </div>
      );
 }

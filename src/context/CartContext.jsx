@@ -8,6 +8,7 @@ const CartProvider = ({ children }) => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+  
   const [itemAmount, setItemAmount] = useState(0);
   const [total, setTotal] = useState(0);
   const [cartCount, setCartCount] = useState(0);
