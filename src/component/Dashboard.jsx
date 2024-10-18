@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }) {
 
   const sidebarItems = [
     { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Orders', path: '/dashboard/orders' },
+    { name: 'Orders', path: '/order' },
     { name: 'Downloads', path: '/dashboard/downloads' },
     { name: 'Addresses', path: '/dashboard/addresses' },
     { name: 'Account details', path: '/dashboard/account' },

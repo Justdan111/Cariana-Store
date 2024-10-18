@@ -15,6 +15,7 @@ import ErrorPage from "./pages/ErrorPage";
 import ProtectedRoute from "./functions/ProtectedRoute";
 import SignUp from "./auth/SignUp";
 import Login from "./auth/Login";
+import { OrderHistory } from "./component/OrderHistory";
 
 
 const router = createHashRouter(
@@ -33,6 +34,7 @@ const router = createHashRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/order" element={<OrderHistory/>} />
       
     </Route>
 

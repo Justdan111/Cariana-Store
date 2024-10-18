@@ -8,7 +8,7 @@ const CartProvider = ({ children }) => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  
+  const [orderHistory, setOrderHistory] = useState([])
   const [itemAmount, setItemAmount] = useState(0);
   const [total, setTotal] = useState(0);
   const [cartCount, setCartCount] = useState(0);
@@ -59,15 +59,17 @@ const CartProvider = ({ children }) => {
   };
   
 
+  const emptyCart = () => {
+    setCart([]);
+  };
+
+  const addOrder = (order) => {
+    setOrderHistory((prevOrders) => [...prevOrders, order]);
+  };
 
 
-  // const increaseAmount = (item) => {
-  //   setItemAmount((prev) => 
-  //   prev.map((x) => {
-  //     return x.id === item.id ? { ...item, qty: item.qty + 1} : item;
-  //   })
-  // )
-  // }
+
+ 
 
   // Remove from cart
   const removeFromCart = (id) => {
@@ -101,7 +103,7 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, decreaseAmount, itemAmount, total, isInCart, itemAmount, setItemAmount, setCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, decreaseAmount, itemAmount, total, isInCart, itemAmount, setItemAmount, setCart, emptyCart, addOrder, orderHistory }}>
       {children}
     </CartContext.Provider>
   );
