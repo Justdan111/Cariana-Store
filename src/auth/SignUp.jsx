@@ -7,7 +7,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { doCreateUserWithEmailAndPassword,} from "../firebase/auth";
 import { useAuth } from "../context/AuthContext";
-import google from "../assets/google-icon.png"
+
 
 const SignUp = () => {
   const form = useForm({
