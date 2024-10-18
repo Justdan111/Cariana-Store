@@ -5,8 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidationSchema } from "../functions/LoginValidation";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { doCreateUserWithEmailAndPassword } from "../firebase/auth";
+import { doCreateUserWithEmailAndPassword,} from "../firebase/auth";
 import { useAuth } from "../context/AuthContext";
+import google from "../assets/google-icon.png"
 
 const SignUp = () => {
   const form = useForm({
@@ -62,7 +63,7 @@ const SignUp = () => {
                   <input
                       type="text"
                       id="email"
-                      placeholder="enter a valid email address"
+                      placeholder="Enter a valid email address"
                       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
                       {...register("email")} />
                   {errors.email && (
@@ -79,7 +80,7 @@ const SignUp = () => {
                   <input
                       type="password"
                       id="password"
-                      placeholder="enter a strong password"
+                      placeholder="Enter a strong password"
                       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
                       {...register("password")} />
                   {errors.password && (
@@ -94,7 +95,7 @@ const SignUp = () => {
 
               <button
                   type="submit"
-                  className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                  className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all duration-200 ease-in-out transform hover:scale-105"
               >
                   SIGNUP
               </button>
@@ -102,6 +103,17 @@ const SignUp = () => {
               <div className="block text-center mt-4 text-black">  Already have an account?
               <Link to={'/login'} className="text-pink-500 hover:text-pink-600"> Login </Link>
               </div>
+
+
+              {/* <h1 className="text-center m-10 ">OR</h1>
+
+<button
+className="w-full flex items-center justify-center text-primary font-semibold bg-white py-2 px-4 rounded-md shadow-md border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-black focus:ring-offset-2 transition-all duration-200 ease-in-out transform hover:scale-105"
+onClick={(e) => onGoogleSignIn(e)}
+>
+<img src={google} alt="Google logo" className="w-6 h-6 mr-3" />
+Continue With Google
+</button> */}
 
       </form> 
       

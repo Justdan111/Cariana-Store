@@ -10,7 +10,7 @@ import { ProductContext } from '../context/ProductContext';
 
 const Wishlist = () => {
   const { wishList,    removeFromWishList } = useContext(WishListContext);
-  const { addToCart, isInCart } = useContext(CartContext);
+  const { addToCart, } = useContext(CartContext);
   const { truncateText } = useContext(ProductContext)
   
 
@@ -30,7 +30,7 @@ const Wishlist = () => {
         </thead>
         <tbody>
           {wishList.map((item) => {
-            const inCart = isInCart(item.id);
+           
             return (
               <tr key={item.id} className="border-b">
                 <td className="p-4 flex items-center">
@@ -51,14 +51,16 @@ const Wishlist = () => {
                 </td>
                 <td className="p-4 text-right">
                   <div className="flex items-center justify-end gap-4">
-                    <button
-                      onClick={() => addToCart(item, item.id)}
-                      className='p-2 rounded ${
-                        bg-primary text-white  
-                       hover:bg-red-600'
-                    >
-                     {inCart ? "Added to cart" : "Add to cart"}
-                    </button>
+                  <button
+              onClick={() => {
+                addToCart(item, item.id);
+                removeFromWishList(item.id);
+              }}
+              className='p-2 rounded bg-primary text-white hover:bg-red-600'
+            >
+              Add to cart
+            </button>
+
                     <button
                       className="p-2 bg-gray-200 rounded hover:bg-gray-300"
                       onClick={() => removeFromWishList(item.id)}

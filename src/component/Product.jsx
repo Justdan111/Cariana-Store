@@ -17,7 +17,7 @@ const Product = ({ product  }) => {
     const { truncateText } = useContext(ProductContext);
     const { addToCart, isInCart } = useContext(CartContext)
     const inCart = isInCart(product.id);
-    const {addToWishList, isInWishList} = useContext(WishListContext)
+    const {addToWishList, isInWishList, } = useContext(WishListContext)
     const inWishList = isInWishList(product.id);
 
     const { id, image, category, title, price } = product;

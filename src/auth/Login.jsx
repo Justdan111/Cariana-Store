@@ -7,6 +7,7 @@ import { loginValidationSchema } from "../functions/LoginValidation";
 import { Link, Navigate } from "react-router-dom";
 import { doSignINWithEmailAndPassword, doSignInWithGoogle } from "../firebase/auth";
 import { useAuth } from "../context/AuthContext";
+import google from "../assets/google-icon.png"
 
 const Login = () => {
 
@@ -19,7 +20,7 @@ const Login = () => {
     resolver: zodResolver(loginValidationSchema),
   });
 
-  const { register, handleSubmit, control, formState: { errors } } = form;
+  const { register, handleSubmit,  formState: { errors } } = form;
 
   const onSubmit = async ({ email, password })  => {
     console.log({ email, password });
@@ -86,7 +87,7 @@ const Login = () => {
 
               <button
                   type="submit"
-                  className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+                  className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all duration-200 ease-in-out transform hover:scale-105"
               >
                   LogIn
               </button>
@@ -95,12 +96,17 @@ const Login = () => {
               <Link to={'/signup'} className="text-pink-500 hover:text-pink-600"> Signup </Link>
               </div>
 
-                    <button 
-        className="w-full text-black py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
-        onClick={(e) => onGoogleSignIn(e)} 
+              <h1 className="text-center m-5 ">OR</h1>
+
+                    <button
+        className="w-full flex items-center justify-center text-primary font-semibold bg-white py-2 px-4 rounded-md shadow-md border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-black focus:ring-offset-2 transition-all duration-200 ease-in-out transform hover:scale-105"
+        onClick={(e) => onGoogleSignIn(e)}
       >
+        <img src={google} alt="Google logo" className="w-6 h-6 mr-3" />
         Continue With Google
       </button>
+
+
 
 
       </form> 

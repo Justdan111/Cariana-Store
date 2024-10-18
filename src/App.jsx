@@ -16,9 +16,11 @@ import ProtectedRoute from "./functions/ProtectedRoute";
 import SignUp from "./auth/SignUp";
 import Login from "./auth/Login";
 
+
 const router = createHashRouter(
   createRoutesFromElements(
     <>
+     
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="/shop" element={<Shop />} />
